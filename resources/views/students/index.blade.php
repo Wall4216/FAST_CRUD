@@ -31,10 +31,16 @@
                                         <td>{{$item->address}}<</td>
                                         <td>{{$item->mobile}}<</td>
                                         <td>
-                                            <a href="{{'$/student/'}}" title="View Student"><button class="btn btn-info" aria-hidden="true">View</button> </a>
-                                            <a href="" title="Edit Student"><button class="btn btn-info button-green" aria-hidden="true">Edit</button> </a>
-                                            <a href="" title="Delete Student"><button class="btn btn-info btn-danger" aria-hidden="true">Delete</button> </a>
+                                            <a href="{{'/students/' . $item->id}}" title="View Student"><button class="btn btn-info" aria-hidden="true">View</button> </a>
+                                            <a href="{{'/students/' . $item->id . '/edit'}}" title="Edit Student"><button class="btn btn-info button-green" aria-hidden="true">Edit</button> </a>
+                                            <form method="POST" action="{{ url('/students' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button class=" btn btn-info btn-danger btn-sm btn" >Delete</button>
+                                            </form>
+
                                         </td>
+
                                     </tr>
                                     @endforeach
 
